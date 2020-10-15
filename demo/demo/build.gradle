@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'com.palantir.docker' version '0.25.0'
+	id "com.github.honourednihilist.gradle-postgresql-embedded" version "0.4.0"
 }
 
 group = 'com.example'
@@ -13,10 +15,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	//runtimeOnly ('org.postgresql:postgresql')
+	//implementation('org.assertj:assertj-core')
+	//implementation('org.springframework.boot:spring-boot-starter-jdbc')
+	//implementation('org.flywaydb:flyway-core')
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+
 }
 
 test {

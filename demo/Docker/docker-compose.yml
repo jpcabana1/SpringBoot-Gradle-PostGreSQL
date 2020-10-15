@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  #Postgres + Adminer
+  postgres:
+    image: postgres
+    #restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=prudentialdb
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    ports:
+      - 5432:5432
+  adminer:
+    image: adminer
+    #restart: always
+    ports:
+      - 8081:8080
+      
+      
+  #Redis
+  redis:
+    image: redis
+    #restart: always
+    ports:
+      - 6379:6379
